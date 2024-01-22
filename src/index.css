@@ -41,35 +41,31 @@ h1 {
 
 
 .center {
-  position: absolute;
-  height: 20%;
+  margin-top: 100px;
+  margin-top: 150px;
+  margin-bottom: 200px;
+  height: 100%;
   width: 100%;
-  top: 20vh;
- margin-left: 1px;
- margin-right: 1px;
-   /* Update the flex property to 8 for 80% width */
-   align-items: center;
-   justify-content: center;
+ 
+  justify-content: center;
+  overflow: hidden;
   display: flex;
-  
- 
- 
-  
-  
-
 
 }
 
 
 body {
+  min-height: 100vh;
+  
   justify-content: center; 
- position: relative;
+
+ 
+  
 
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
-  min-width: 100vw;
-  overflow: hidden;
+
+  
 }
 
 

@@ -1,13 +1,14 @@
 
 
 .buttoncontainer {
-    position: absolute;
-    bottom: 12%;
-    margin-top: 1%;
+    
+    
+   
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: center;
     width: 100vw;
+    
     -webkit-flex-direction: row;
     flex-direction: row;
     object-fit: scale-down;

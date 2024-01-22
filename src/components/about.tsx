@@ -5,9 +5,9 @@ import './about.css';
 
 function Wabout() {
   return (<div>
-    <div className='center'>
+    
     <div className='wabout'>
-        <div className='textbg'>
+        <div className='atextwrapper'></div>
       <div className='abouttext'>
     
       <h2>Welcome to Our Gaming Haven 🎮</h2>
@@ -44,8 +44,8 @@ function Wabout() {
 
       </div>
       </div>
-    </div></div>
     </div>
+    
   );
 }
 

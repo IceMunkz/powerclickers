@@ -29,9 +29,9 @@ function Website() {
             <AnimatePresence>
               <motion.div
                 key="content"
-                initial={{ opacity: 0, y: 0 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 0 }}
+                initial={{ opacity: 0}}
+                animate={{ opacity: 1}}
+                exit={{ opacity: 0}}
               >
                 <Wcontent />
               </motion.div>
@@ -44,9 +44,9 @@ function Website() {
             <AnimatePresence>
               <motion.div
                 key="about"
-                initial={{ opacity: 0, y: 0 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 0 }}
+                initial={{ opacity: 0}}
+                animate={{ opacity: 1}}
+                exit={{ opacity: 0}}
               >
                 <Wabout />
               </motion.div>

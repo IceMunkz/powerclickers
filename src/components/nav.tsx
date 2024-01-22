@@ -19,7 +19,7 @@ function WNav() {
   
 
   return (
-    <div className='nav'>
+    
     <nav className="mask">
       <ul className="list">
         <motion.li whileHover="hover" variants={pulseVariants}>
@@ -43,7 +43,7 @@ function WNav() {
         </motion.li>
       </ul>
     </nav>
-     </div>
+     
   );
 }
 
