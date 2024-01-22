@@ -1,0 +1,53 @@
+import React, { useState, useContext } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Container from 'react-bootstrap/Container';
+import './nav.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaVolumeMute } from 'react-icons/fa';
+import Wcontent from "../logo";
+import Wabout from "../about";
+import { ActiveComponentContext } from '../nav';
+import { FaPause } from "react-icons/fa";
+
+const Sceneswitch: React.FC = () => {
+  const [activeComponent, setActiveComponent] = useState<string>("content");
+  const activeComponentContext = useContext(ActiveComponentContext);
+
+  const handleToggle = (component: string) => {
+    // You can use information from ActiveComponentContext here
+    console.log(activeComponentContext);
+
+    setActiveComponent(component);
+  };
+
+  return (
+    <container>
+      <AnimatePresence>
+        {activeComponent === "about" && (
+          <motion.div 
+            className='animatea'
+            key="about"
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 0 }}
+          >
+            <Wabout />
+          </motion.div>
+        )}
+        {activeComponent === "content" && (
+          <motion.div 
+            className='animatehome'
+            key="content"
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 0 }}
+          >
+            <Wcontent />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Container>
+  );
+};
+
+export default Sceneswitch;

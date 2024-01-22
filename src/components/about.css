@@ -1,0 +1,21 @@
+.wabout {
+    top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.textbg {
+    position: relative;
+    
+    
+  
+    
+    background: linear-gradient(45deg, #000000, transparent); /* Use a gradient for a cool effect */
+    padding: 20px; /* Adjust the padding as needed */
+    border-radius: 10px; /* Optional: Add rounded corners for a stylish look */
+}
+.abouttext {
+    color: antiquewhite;
+    text-align: center;
+    z-index: 1;
+}

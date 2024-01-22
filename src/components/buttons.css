@@ -1,0 +1,39 @@
+
+
+.buttoncontainer {
+    position: absolute;
+    bottom: 12%;
+    margin-top: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 100vw;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    object-fit: scale-down;
+    }
+
+ 
+  
+  .disbutton,
+  .steambutton {
+    
+    max-width: 100px;
+    max-height: 100px;
+    z-index: 0;
+    opacity: 0.9;
+    margin: 10 75px; /* Adjust the margin values as needed */
+    margin-left: 50px;
+    margin-right: 50px;
+    cursor: pointer;
+    object-fit: scale-down;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    user-select: none;
+    
+  }
+  
+  .disbutton:hover,
+  .steambutton:hover {
+    transform: scale(1.1);
+  }

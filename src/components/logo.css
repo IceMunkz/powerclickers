@@ -1,0 +1,17 @@
+
+
+.brand {
+    display: flex;
+    object-fit: scale-down;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    max-width: 300px;
+    max-height: 300px;
+    z-index: 0;
+}
+
+
+
+
+

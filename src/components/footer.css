@@ -1,0 +1,47 @@
+
+.footer {
+  
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  margin-top: 1px;
+  
+  
+  transition: 0.3s ease-out;
+  backdrop-filter: blur(8px) brightness(1.2);
+  -webkit-backdrop-filter: blur(8px) brightness(1.2);
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+  color: white;
+  font-size: 16px;
+  z-index: 0; /* Set a lower z-index to place the footer behind other elements */
+
+
+  mask-image: linear-gradient(transparent, black 70% );
+  -webkit-mask-image: linear-gradient(transparent, black 70%);
+}
+
+.footercontainer
+{
+  flex-direction: row;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+}
+
+.footerimg
+{
+  opacity: 0.25;
+  margin-top: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  object-fit: scale-down;
+
+
+}
+
+
+
+
