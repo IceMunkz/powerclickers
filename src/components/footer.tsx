@@ -19,9 +19,11 @@ function Wfooter() {
       <div className='footer'>
   
     <div className='footercontainer'>
-      
+  <a href="http://snaildev.uk">
 <img src={footerimg} 
+ 
 className='footerimg'/>
+</a>
 
 
 

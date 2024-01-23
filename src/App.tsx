@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 
 function Website() {
-  
+
   return (
    
       <div>   <Wbackground />
@@ -27,11 +27,10 @@ function Website() {
           path="/home"
           element={
             <AnimatePresence>
-              <motion.div
-                key="content"
-                initial={{ opacity: 0}}
-                animate={{ opacity: 1}}
-                exit={{ opacity: 0}}
+              <motion.div 
+                key='home'
+                animate={{ x: 0 }}
+                transition={{ delay: 1 }}
               >
                 <Wcontent />
               </motion.div>
@@ -42,17 +41,21 @@ function Website() {
           path="/about"
           element={
             <AnimatePresence>
-              <motion.div
-                key="about"
-                initial={{ opacity: 0}}
-                animate={{ opacity: 1}}
-                exit={{ opacity: 0}}
+               
+              <motion.div 
+              key='about'
+                
+              animate={{ x: 0 }}
+  transition={{ delay: 1 }}
               >
                 <Wabout />
               </motion.div>
+               
             </AnimatePresence>
           }
+          
         />
+        
         <Route path="/cart" element={<Wbackground />} />
       </Routes>
       

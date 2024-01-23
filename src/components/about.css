@@ -1,7 +1,11 @@
 .wabout {
-    
+    height: 40%; 
+    overflow: clip;
+}
+.atextwrapper
+{
     overflow-y: scroll;
-    height: 40%;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,11 +13,6 @@
     background: linear-gradient(45deg, #000000, transparent); /* Use a gradient for a cool effect */
     border-radius: 10px; /* Optional: Add rounded corners for a stylish look */
 
-}
-.atextwrapper
-{
-  
-    align-items: end;
 }    
     
      

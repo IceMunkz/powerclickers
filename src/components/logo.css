@@ -5,12 +5,12 @@
     
     display: flex;
     object-fit: scale-down;
-    align-items: center;
+    align-items: start;
     justify-content: center;
    
     max-width: 600px;
-    max-height: 300px;
-    z-index: 0;
+    max-height: 600px;
+    z-index: 1;
 }
 
 

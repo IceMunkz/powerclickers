@@ -7,7 +7,7 @@ function Wabout() {
   return (<div>
     
     <div className='wabout'>
-        <div className='atextwrapper'></div>
+        <div className='atextwrapper'>
       <div className='abouttext'>
     
       <h2>Welcome to Our Gaming Haven 🎮</h2>
@@ -41,7 +41,7 @@ function Wabout() {
         Because gaming is more fun when you're surrounded by friends who share your passion. 🚀🐾
       </p>
     
-
+      </div>
       </div>
       </div>
     </div>
