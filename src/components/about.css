@@ -1,26 +1,29 @@
 .wabout {
     
-    
-    
+    overflow-y: scroll;
+    height: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 1;
+    flex-grow: 0;
     background: linear-gradient(45deg, #000000, transparent); /* Use a gradient for a cool effect */
     border-radius: 10px; /* Optional: Add rounded corners for a stylish look */
+
 }
 .atextwrapper
 {
-
-height: 400px;
+  
+    align-items: end;
 }    
     
      
     
 
 .abouttext {
-    overflow-y: scroll;
-     
+   
+    height: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     color: antiquewhite;
     text-align: center;
     z-index: 0;

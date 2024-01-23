@@ -1,12 +1,12 @@
 
 
 .buttoncontainer {
-    
-    
+   position: fixed;
+   bottom:10%;
    
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: space-between;
     width: 100vw;
     
     -webkit-flex-direction: row;
