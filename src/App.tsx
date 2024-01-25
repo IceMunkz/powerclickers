@@ -8,39 +8,43 @@ import Wabout from "./components/about";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Wbuttons from "./components/buttons";
 import { motion, AnimatePresence } from 'framer-motion';
-
+import Waudio from './components/audio';
+import { RecoilRoot } from 'recoil';
+import Wlogin from './components/login';
 
 function Website() {
 
   return (
    
-      <div>   <Wbackground />
-        
-         <Wnav />
+      <div> <RecoilRoot> {/* Recoil State Management Wrapper ''Maybe make Active Component States rather than using ReactRouter'*/}
+         <Wbackground /> {/* Background Component managed by 'videoState'*/}
+        <Waudio /> {/* Audio Component managed by 'audioState'*/}
+         <Wnav />  {/* Nav Component */}
 
 
      
         
-        <div className="center">
-        <Routes>
+        <div className="center">   {/* Main Content Div 'center' */}
+        <Routes>    {/* Routes for nav Links */}
         <Route
-          path="/home"
+          path="/"
           element={
-            <AnimatePresence>
+            <AnimatePresence>    {/* Transition animation tag for component switchs */}
               <motion.div 
                 key='home'
                 animate={{ x: 0 }}
                 transition={{ delay: 1 }}
               >
+                
                 <Wcontent />
               </motion.div>
-            </AnimatePresence>
+            </AnimatePresence>   
           }
         />
         <Route
           path="/about"
           element={
-            <AnimatePresence>
+            <AnimatePresence>   {/* Transition animation tag for component switchs*/}
                
               <motion.div 
               key='about'
@@ -51,19 +55,37 @@ function Website() {
                 <Wabout />
               </motion.div>
                
-            </AnimatePresence>
+            </AnimatePresence> 
+          }
+          
+        />
+                <Route
+          path="/login"
+          element={
+            <AnimatePresence>   {/* Transition animation tag for component switchs*/}
+               
+              <motion.div 
+              key='login'
+                
+              animate={{ x: 0 }}
+  transition={{ delay: 1 }}
+              >
+                <Wlogin />
+              </motion.div>
+               
+            </AnimatePresence> 
           }
           
         />
         
-        <Route path="/cart" element={<Wbackground />} />
       </Routes>
       
           
         </div>
         
-        <Wbuttons />
-        <Wfooter />
+        <Wbuttons /> {/* Side Nav Buttons - '''Needs work for scaling'''*/}
+        <Wfooter /> {/* Footer Component '' Works fine ''*/}
+        </RecoilRoot> {/* Recoil State Management Wrapper*/}
       </div>
 
   );

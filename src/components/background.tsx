@@ -1,41 +1,33 @@
 import bgvideo from "../assets/bgvideo.mp4";
-import React, { useState, useRef, useEffect } from 'react';
-import "./background.css"
-import boopSfx from '../assets/background.mp3';
-import bgaudio from '../assets/background2.mp3';
-import useSound from 'use-sound'; // Import ExposedData type
+import React, { useState, useEffect, useRef } from 'react';
+import "./background.css";
+
+import { useRecoilState } from 'recoil';
+import { videoState } from './recoilState';
 
 function Wbackground() {
-    const [playbg, { stop: stopbg }] = useSound(bgaudio, { volume: 0.05, loop: true });
-    const [play, { stop: stopBoop }] = useSound(boopSfx);
-  
-    useEffect(() => {
-      playbg();
-      return () => stopbg();
-    }, [playbg, stopbg]);
-  
+  const [bgPaused, setBGPaused] = useRecoilState<boolean>(videoState);
 
+  useEffect(() => {
+    const videoRef = document.querySelector('.video') as HTMLVideoElement;
 
-    const videoRef = useRef<HTMLVideoElement | null>(null);
-    const [isVideoPlaying, setVideoPlaying] = useState(true);
+    if (videoRef) {
+      // Check the bgPaused state and play or pause the video accordingly
+      if (bgPaused) {
+        videoRef.pause();
+      } else {
+        videoRef.play();
+      }
+    }
+  }, [bgPaused]); // Trigger the effect whenever bgPaused changes
 
-   const toggleVideo = () => {
-        if (isVideoPlaying) {
-            videoRef.current?.pause();
-        } else {
-            videoRef.current?.play();
-        }
-        setVideoPlaying(!isVideoPlaying);
-    };
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-    return (
-        
-            <div className='video'>
-                <video ref={videoRef} src={bgvideo} autoPlay loop muted onClick={toggleVideo} />
-            </div>
-        
-    );
+  return (
+    <video ref={videoRef} className="video" autoPlay loop muted
+      src={bgvideo} >
+    </video>
+  );
 }
-
 
 export default Wbackground;
