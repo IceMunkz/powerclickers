@@ -1,0 +1,61 @@
+.tableimage
+{
+max-width: 400px;
+margin-left: 9%;
+
+}
+
+
+.leaderboard-wrapper
+{
+  margin-top: 100px;
+    
+    margin-right: 50%;
+    z-index: 3;
+
+}
+.table-container {
+    
+    
+    font-family: 'Press Start 2P', system-ui;
+  }
+  
+  /* Add any additional styles for the table as needed */
+
+/* Apply some basic styling to the table */
+/* Apply some basic styling to the table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+  }
+
+  /* Style table header */
+  .table th {
+    background-color: #cd04ff; /* Green background color */
+    color: rgb(252, 252, 252); /* White text color */
+    padding: 12px;
+    text-align: left;
+  }
+  
+  /* Style table cells */
+  .table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Add a bottom border to separate rows */
+    background-color: #cd04ff; opacity: 0.75;
+     color: white;
+     
+}
+  
+  /* Style alternating rows for better readability */
+  .table tbody tr:nth-child(even) {
+    background-color: #000000;
+  }
+  
+  /* Add hover effect on rows */
+  .table tbody tr:hover {
+    background-color: #000000;
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+  }
+ 

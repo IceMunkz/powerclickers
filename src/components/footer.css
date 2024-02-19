@@ -4,10 +4,10 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 100px;
+  
   width: 100%;
   margin-top: 1px;
-  align-items: center;
+  
   justify-content: center;
   transition: 0.3s ease-out;
   backdrop-filter: blur(8px) brightness(1.2);
@@ -15,7 +15,7 @@
   text-shadow: 0 0 5px rgba(0,0,0,0.5);
   color: white;
   font-size: 16px;
-  z-index: 0; /* Set a lower z-index to place the footer behind other elements */
+  z-index: 1; /* Set a lower z-index to place the footer behind other elements */
   display: flex;
 
   mask-image: linear-gradient(transparent, black 70% );
@@ -24,6 +24,7 @@
 
 .footercontainer
 {
+  height: 100px;
   flex-direction: row;
   align-items: center;
   

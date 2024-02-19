@@ -35,11 +35,17 @@ function WNav() {
           <Link to="/">Home</Link>
         </motion.li>
         <motion.li whileHover="hover" variants={pulseVariants}>
-          <Link to="/about">About</Link>
+          <Link to="/media">Media</Link>
+        </motion.li>
+        <motion.li whileHover="hover" variants={pulseVariants}>
+          <Link to="/stats">
+            Stats
+          </Link>
         </motion.li>
         <motion.li whileHover="hover" variants={pulseVariants}>
           <Link to="/login">Login</Link>
         </motion.li>
+      
         <motion.li whileHover="hover" variants={pulseVariants} onClick={() => togglePause()}>
           <Link to="/">
             <FaVolumeMute />
@@ -50,6 +56,7 @@ function WNav() {
             <FaPause />
           </Link>
         </motion.li>
+       
       </ul>
     </nav>
   );

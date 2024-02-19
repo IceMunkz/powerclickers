@@ -24,7 +24,7 @@ function Wbackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
-    <video ref={videoRef} className="video" autoPlay loop muted
+    <video ref={videoRef} className="videobg" autoPlay loop muted
       src={bgvideo} >
     </video>
   );

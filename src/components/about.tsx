@@ -1,50 +1,77 @@
+import React, { useEffect, useState } from 'react';
+import './about.css'
+import aboutimg from '../assets/aboutimg.png';
+import videxample from '../assets/videoload.mp4';
+import fatal from '../assets/fatal.mp4'
+import cybah from '../assets/cybah.mp4'
+import ice from '../assets/ice.mp4'
 
-
-import React from 'react';
-import './about.css';
+import Randomimage from '../assets/cybahlogo.png'
+import Cybahimage from '../assets/cybahlogo.png'
+import Iceimage from '../assets/iceLogo.png'
+import Fatalimage from '../assets/FatalPngLogo.png'
 
 function Wabout() {
-  return (<div>
-    
-    <div className='wabout'>
+  const imageSizebox: React.CSSProperties = {
+    width: '400px',
+  };
+  
+
+  const [isGalleryMounted, setIsGalleryMounted] = useState(false);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  
+
+  const handleButtonClick = (index: number) => {
+    setCurrentVideoIndex(index);
+    const aboutvideo = document.querySelector('.bboutvid') as HTMLVideoElement;
+    aboutvideo.src = aboutvideoSources[index];
+  };
+
+  const aboutvideoSources = [videxample, cybah, ice, fatal, videxample];
+
+  return (
+    <div>
+            <div className="gwrapper">
+        <button className="gbox a" onClick={() => handleButtonClick(0)}>
+          <img src={aboutimg} alt="Image A" className='BoxImage'  />
+        </button>
+        <button className="gbox b" onClick={() => handleButtonClick(1)}>
+          <img src={Cybahimage} alt="Image B" className='BoxImage'  />
+        </button>
+        <button className="gbox c" onClick={() => handleButtonClick(2)}>
+          <img src={Iceimage} alt="Image C" className='BoxImage'  />
+        </button>
+        <button className="gbox d" onClick={() => handleButtonClick(3)}>
+          <img src={Fatalimage} className='BoxImage' alt="Image D" />
+        </button>
+        <button className="gbox e" onClick={() => handleButtonClick(4)}>
+          <img className='BoxImage' src={aboutimg} alt="Image E"   />
+        </button>
+      </div>
+        <div className='bwrapper'>
+          <div className='bbouttext'>
+            <video className='bboutvid' autoPlay controls muted loop src={aboutvideoSources[currentVideoIndex]}></video>
+          </div>
+        </div>
+      <div className='wabout'>
+      
         <div className='atextwrapper'>
-      <div className='abouttext'>
-    
-      <h2>Welcome to Our Gaming Haven 🎮</h2>
-      <p> </p>
-      <p>
-        At PowerClickers, we're not just gamers; we're a family brought together by our love for gaming, a shared fondness for cats, and an undeniable passion for dominating the virtual realms. 
-      </p>
+        <img src={aboutimg} className='aboutimg' style={imageSizebox} />
+          <div className='abouttext'>
+            <h2>Welcome to Our Gaming Haven 🎮</h2>
+            <p>
+              At PowerClickers, we're not just gamers; we're a family brought together by our love for gaming, a shared fondness for cats, and an undeniable passion for dominating the virtual realms.
+            </p>
+            <p>
+              Because gaming is more fun when you're surrounded by friends who share your passion. 🚀🐾
+            </p>
+          </div>
+        </div>
+        </div>
 
-      <h2>🌈 Friendliest Community</h2>
-      <p>
-        <strong>Warmth and Inclusivity:</strong> Step into a world where friendliness knows no bounds. Our community is a haven for gamers of all backgrounds, united by the joy of gaming.
-      </p>
-      <p>
-        <strong>Cat Lovers Unite:</strong> If you share a love for our feline friends, you're in good company! Our discussions often include adorable cat stories and memes, creating a purr-fect environment.
-      </p>
-
-      <h2>🎮 Insanity Meets Skill</h2>
-      <p>
-        <strong>Insane Skills, Crazy Fun:</strong> We don't just play games; we master them. Our members are known for their insane skills, turning every gaming session into a thrilling experience.
-      </p>
-      <p>
-        <strong>Strategies that Baffle:</strong> From epic raids to intense PvP battles, our strategic prowess will leave you in awe. Get ready for mind-bending tactics and jaw-dropping victories.
-      </p>
-
-      <h2>🤝 Join the Fun!</h2>
-      <p>
-        Whether you're a casual gamer, a competitive enthusiast, or simply love chatting about games and cats, there's a place for you here. Join PowerClickers and be part of a community that feels like home.
-      </p>
-
-      <p>
-        Because gaming is more fun when you're surrounded by friends who share your passion. 🚀🐾
-      </p>
-    
       </div>
-      </div>
-      </div>
-    </div>
+
     
   );
 }
