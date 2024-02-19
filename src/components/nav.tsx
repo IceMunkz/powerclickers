@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaVolumeMute, FaPause } from 'react-icons/fa';
+
 import { Link } from 'react-router-dom';
 import './nav.css';
 

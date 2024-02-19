@@ -1,21 +1,23 @@
-.tableimage
+.tableImage
 {
 max-width: 400px;
-margin-left: 9%;
+margin-left: 15%;
+
 
 }
 
 
 .leaderboard-wrapper
 {
-  margin-top: 100px;
+ 
     
     margin-right: 50%;
     z-index: 3;
 
 }
 .table-container {
-    
+
+
     
     font-family: 'Press Start 2P', system-ui;
   }
@@ -25,6 +27,10 @@ margin-left: 9%;
 /* Apply some basic styling to the table */
 /* Apply some basic styling to the table */
 .table {
+  box-shadow:   -15px 0 0 0 rgb(42, 1, 53),
+  15px 0 0 0 rgb(42, 1, 53),
+  0 -15px 0 0 rgb(42, 1, 53),
+  0 15px 0 0 rgb(42, 1, 53);
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;

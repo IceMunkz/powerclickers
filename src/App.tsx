@@ -13,15 +13,18 @@ import { RecoilRoot } from 'recoil';
 import Wlogin from './components/login';
 import 'tailwindcss/tailwind.css';
 import Wleaderboard from './components/leaderboard';
-
+import { ClerkProvider } from '@clerk/clerk-react'
 function Website() {
   return (
     <div>
+  
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
       </style>
       {/* Background Component managed by 'videoState'*/}
+     
       <RecoilRoot>
+      
         {/* Recoil State Management Wrapper ''Maybe make Active Component States rather than using ReactRouter'*/}
         <Wbackground />
         <Waudio /> {/* Audio Component managed by 'audioState'*/}
@@ -43,6 +46,7 @@ function Website() {
                     transition={{ duration: 1 }}
                   >
                     <Wcontent />
+                    <Wbuttons />
                   </motion.div>
                 </AnimatePresence>
               }
@@ -100,9 +104,10 @@ function Website() {
             />
           </Routes>
         </div>
-        <Wbuttons /> {/* Side Nav Buttons - '''Needs work for scaling'''*/}
+         {/* Side Nav Buttons - '''Needs work for scaling'''*/}
         <Wfooter /> {/* Footer Component '' Works fine ''*/}
       </RecoilRoot>
+     
       {/* Recoil State Management Wrapper*/}
     </div>
   );
