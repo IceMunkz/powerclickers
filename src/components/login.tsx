@@ -1,164 +1,90 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios, { AxiosError } from 'axios';
+import Register from './register';
+import { useSetRecoilState, useRecoilValue } from 'recoil'; // Correct import
+import { authState } from '../state/authState'; // Make sure the path is correct
 import './login.scss';
-import Wregister from './register';
-import { createClient, } from "@supabase/supabase-js";
-
-// Initialize Supabase client
-const supabase = createClient("https://bamcxplnrcjfqgronyap.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhbWN4cGxucmNqZnFncm9ueWFwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDgzMTU0NDYsImV4cCI6MjAyMzg5MTQ0Nn0.HNijnRaBc50--yi7p0liYNlZMFj3NWir1M3M7gA6Mhw");
-
-interface FormData {
-  email: string;
-  password: string;
-}
-
-interface ErrorState {
-  email?: string;
-  password?: string;
-  form?: string;
-}
+import { FaDiscord } from "react-icons/fa";
 
 
-function Wlogin() {
-  const [showRegisterModal, setShowRegisterModal] = useState(false);
-  // Initialize formData state inside the component
-  const [formData, setFormData] = useState<FormData>({ email: '', password: '' });
-  const [errors, setErrors] = useState<ErrorState>({});
-  const [loginStatus, setLoginStatus] = useState('');
-
-  const toggleRegisterModal = () => setShowRegisterModal(!showRegisterModal);
-
-  const validateForm = (): boolean => {
-    let isValid = true;
-    const newErrors: ErrorState = {};
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-      isValid = false;
-    }
-
-    if (!formData.password.trim()) {
-      newErrors.password = 'Password is required';
-      isValid = false;
-    }
-
-    setErrors(newErrors);
-    return isValid;
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (validateForm()) {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: formData.email,
-        password: formData.password,
-      });
-  
-      if (error) {
-        setLoginStatus(error.message);
-        setErrors(prev => ({ ...prev, form: error.message }));
-      } else if (data) {
-        setLoginStatus('Please verify your email. Check your inbox for a verification link.');
-      } else {
-        setLoginStatus('Login successful');
-        // Redirect or handle login success here
-      }
-    } else {
-      console.log('Form validation failed');
-    }
-  };
-  
-  const { data } = supabase.auth.onAuthStateChange((event, session) => {
-    console.log(event, session)
-  
-    if (event === 'INITIAL_SESSION') {
-      // handle initial session
-     
-    } else if (event === 'SIGNED_IN') {
-      // handle sign in event
-      console.log('Signed In');
-    } else if (event === 'SIGNED_OUT') {
-      console.log('Signed Out');
-      // handle sign out event
-    } else if (event === 'PASSWORD_RECOVERY') {
-      console.log('PassWord Recov');
-      // handle password recovery event
-    } else if (event === 'TOKEN_REFRESHED') {
-      console.log('Token Updated');
-      // handle token refreshed event
-    } else if (event === 'USER_UPDATED') {
-      console.log('User Token Changed');
-      // handle user updated event
-    }
-  })
-  
-  // call unsubscribe to remove the callback
-  data.subscription.unsubscribe()
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    setErrors(prev => ({ ...prev, [name]: '' }));
-  };
-
-  return (
-    <div>
-      <form className="form" autoComplete="off" onSubmit={handleSubmit}>
-        <div className='login-status'>
-          {loginStatus && <p className={loginStatus === 'Login successful' ? 'success' : 'error'}>{loginStatus}</p>}
-
-          </div>
-    <div className={`control block-cube block-input ${errors.email ? 'error' : ''}`}>
-    <input
-  name="email" // Ensure this matches the state's key
-  type="text"
-  placeholder={errors.email ? errors.email : 'Email'} // Display errors for email
-  onChange={handleChange}
-/>
-    <div className="bg-top"></div>
-    <div className="bg-inner"></div>
-    <div className="bg-right"></div>
-    <div className="bg"></div>
-  </div>
+const Login = () => {
+  const auth = useRecoilValue(authState); // Get the current auth state
+  const setAuthState = useSetRecoilState(authState); // Keep this if you need to update the state
   
 
-  <div className={`control block-cube block-input ${errors.password ? 'error' : ''}`}>
-    <input
-      name="password"
-      type="password"
-      placeholder={errors.password ? errors.password : 'Password'}
-      onChange={handleChange}
-    />
-    <div className="bg-top"></div>
-    <div className="bg-inner"></div>
-    <div className="bg-right"></div>
-    <div className="bg"></div>
-  </div>
-  <button className="btn block-cube block-cube-hover">
-  <div className="bg-top"></div>
-  <div className="bg-inner"></div>
-  <div className="bg-right"></div>
-  <div className="bg"></div>
-  <div className="text">Log In</div>
-</button>
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+    let errorTimeout: string | number | NodeJS.Timeout | undefined; // No need to type it here, TypeScript will infer
 
-</form>
+   
+  
 
-<div className='register-wrap'>
-<button className='btn block-cube block-cube-hover' onClick={toggleRegisterModal}>Register</button></div>
-{showRegisterModal && (
-  <div className="modal-overlay">
-    <div className="modal-content">
-      <Wregister />
-      <button className="modal-close" onClick={toggleRegisterModal}>Close</button>
-    </div>
-  </div>
-)}
-</div>
+    useEffect(() => {
+        return () => {
+            if (errorTimeout) clearTimeout(errorTimeout);
+        };
+    }, []);
 
-  );
-}
+    const handleLogin = async () => {
+        try {
+            const response = await axios.post('http://localhost:3000/login', {
+                email: email.toLowerCase(),
+                password,
+            });
+            // Assuming response.data.token is what you receive
+            console.log('Login successful');
+            setAuthState({ isLoggedIn: true, user: { email, token: response.data.token } });
+            setErrorMessage('');
+        } catch (error) {
+            const axiosError = error as AxiosError;
+            errorTimeout = setTimeout(() => {
+                if (axiosError.response?.data) {
+                    const errMessage = typeof axiosError.response.data === 'string' 
+                        ? axiosError.response.data 
+                        : JSON.stringify(axiosError.response.data);
+                    setErrorMessage(errMessage);
+                } else {
+                    console.error('Login failed:', error);
+                    setErrorMessage('An unknown error occurred');
+                }
+            }, 3000); // Adjust the time as needed
+        }
+    };
 
-export default Wlogin;
+    const toggleRegisterModal = () => setIsRegisterModalOpen(!isRegisterModalOpen);
+
+    return (
+      <div>
+        <div className='login-wrapper'>
+                {auth.isLoggedIn ? (
+                <div>
+                    <p className="error-message">You are logged in!</p>
+                </div>
+            ) : (
+                <>
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                    <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <button onClick={handleLogin}>Login</button>
+                    <button onClick={toggleRegisterModal}>Register</button>
+                    <button onClick={() => window.location.href = 'http://localhost:3000/auth/discord'}><FaDiscord /></button>
+                </>
+            )}
+        </div>
+        {isRegisterModalOpen && (
+            <>
+                <div className="modal-backdrop" onClick={() => setIsRegisterModalOpen(false)}></div>
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                    <Register />
+                    <button onClick={() => setIsRegisterModalOpen(false)}>Close</button>
+                    
+                </div>
+            </>
+        )}
+      </div>
+    );
+};
+
+export default Login;

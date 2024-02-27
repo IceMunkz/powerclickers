@@ -9,12 +9,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Wbuttons from "./components/buttons";
 import { motion, AnimatePresence } from 'framer-motion';
 import Waudio from './components/audio';
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot, useRecoilState } from 'recoil';
 import Wlogin from './components/login';
 import 'tailwindcss/tailwind.css';
 import Wleaderboard from './components/leaderboard';
 import { ClerkProvider } from '@clerk/clerk-react'
+import { SignedOut, SignedIn } from "@clerk/clerk-react"
+import './index.css'
+import { Client } from 'appwrite';
+// Import Firebase auth functions
+import { authState } from './state/authState';
+import Profile from './components/profile';
+import DiscordAuthRedirect from './components/callback';
+
+
 function Website() {
+
+  
+const [auth] = useRecoilState(authState);
+const isLoggedIn = auth.isLoggedIn; // Correct way to access isLoggedIn
   return (
     <div>
   
@@ -23,7 +36,7 @@ function Website() {
       </style>
       {/* Background Component managed by 'videoState'*/}
      
-      <RecoilRoot>
+ 
       
         {/* Recoil State Management Wrapper ''Maybe make Active Component States rather than using ReactRouter'*/}
         <Wbackground />
@@ -32,6 +45,7 @@ function Website() {
         <div className="center">
           {/* Main Content Div 'center' */}
           <Routes>
+         
             {/* Routes for nav Links */}
             <Route
               path="/"
@@ -45,9 +59,20 @@ function Website() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
                   >
-                    <Wcontent />
-                    <Wbuttons />
-                  </motion.div>
+                     {/* Conditional rendering based on isLoggedIn */}
+                     {!auth.isLoggedIn ? (
+                    <>
+                      <Wcontent />
+                      <Wbuttons />
+                    </>
+                  ) : (
+
+                    <div className='WelcomeMessageWrapper'>
+                          <Profile />
+                      
+                    </div>
+                  )}
+                </motion.div>
                 </AnimatePresence>
               }
             />
@@ -102,11 +127,12 @@ function Website() {
                 </AnimatePresence>
               }
             />
+             <Route path="/auth/success" element={<DiscordAuthRedirect />} />
           </Routes>
         </div>
          {/* Side Nav Buttons - '''Needs work for scaling'''*/}
         <Wfooter /> {/* Footer Component '' Works fine ''*/}
-      </RecoilRoot>
+      
      
       {/* Recoil State Management Wrapper*/}
     </div>
@@ -114,3 +140,5 @@ function Website() {
 }
 
 export default Website;
+
+

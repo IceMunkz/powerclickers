@@ -4,15 +4,17 @@ import { FaVolumeMute, FaPause } from 'react-icons/fa';
 
 import { Link } from 'react-router-dom';
 import './nav.css';
-
+import { authState } from '../state/authState';
 import { useRecoilState } from 'recoil';
-import { videoState } from './recoilState';
-import { audioState } from './recoilState';
+import { videoState } from '../state/recoilState';
+import { audioState } from '../state/recoilState';
 import './background'
 function WNav() {
   const [isPaused, setIsPaused] = useRecoilState<boolean>(audioState);
-
   const [bgPaused, setBgPaused] = useRecoilState<boolean>(videoState);
+  const [auth] = useRecoilState(authState);
+  const isLoggedIn = auth.isLoggedIn; // Correct way to access isLoggedIn
+  
 
   const togglePause = () => {
     setIsPaused((prev) => !prev);
@@ -56,8 +58,7 @@ function WNav() {
           <Link to="/">
             <FaPause />
           </Link>
-        </motion.li>
-       
+          </motion.li>
       </ul>
     </nav>
   );

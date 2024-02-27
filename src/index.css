@@ -16,6 +16,7 @@
   --cursor-outline-shade: 0.3;
   --cursor-size: 10px;
   --cursor-outline-size: 12px;
+  
 }
 a {
   font-weight: 500;
@@ -486,3 +487,29 @@ margin-bottom: 10px;
   
   
   /* About CSS End */
+
+  .Welcome-Message-Wrapper
+{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    z-index: 5;
+}
+.Welcome-Message
+{
+    background: rgba(255, 255, 255, 0);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+   
+   
+}

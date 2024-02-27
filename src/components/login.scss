@@ -1,222 +1,109 @@
-*, ::after, ::before {
-  box-sizing: border-box;
-}
-
-$bg_body: transparent;
-$bg_gradient_last_color: rgba(0,212,255,1);
-$bg_gradient: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(52,9,121,1) 37%, $bg_gradient_last_color 94%);; 
-
-
-h1 {
-font-size: 23px;
-}
-
-.form {
-width: 300px;
-padding: 64px 15px 24px;
-margin: 0 auto;
-.control {
-  margin: 0 0 24px;
-  input {
-    width: 100%;
-    padding: 14px 16px;
-    border: 0;
-    background: transparent;
-    color: #fff;
-    font-family: monospace, serif;
-    letter-spacing: 0.05em;
-    font-size: 16px;
-    &:hover,
-    &:focus {
-      outline: none;
-      border: 0;
-    }
-  }
-}
-.btn {
-  width: 100%;
-  display: block;
-  padding: 14px 16px;
-  background: transparent;
-  outline: none;
-  border: 0;
-  color: #fff;
-  letter-spacing: 0.1em;
-  font-weight: bold;
-  font-family: monospace;
-  font-size: 16px;
-}
-
-}
-
-.block-cube {
-position: relative;
-.bg-top {
-  position: absolute;
-  height: 10px;
-  background: rgb(2,0,36);
-  background: $bg_gradient;
-  bottom: 100%;
-  left: 5px;
-  right: -5px;
-  transform: skew(-45deg, 0);
+/* login-register.css */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
   margin: 0;
-  .bg-inner{
-    bottom: 0;
-  }
-}
-.bg {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: rgb(2,0,36);
-  background: $bg_gradient;
-}
-.bg-right {
-  position: absolute;
-  background: rgb(2,0,36);
-  background: rgba(0,212,255,1);
-  top: -5px;
-  z-index: 0;
-  bottom: 5px;
-  width: 10px;
-  left: 100%;
-  transform: skew(0, -45deg);
-  .bg-inner {
-    left: 0;
-  }
-}
-.bg {
-  .bg-inner {
-    transition: all 0.2s ease-in-out;
-  }
-}
-.bg-inner {
-  background: $bg_body;
-  position: absolute;
-  left: 2px;
-  top: 2px;
-  right: 2px;
-  bottom: 2px;
-}
-.text {
-  position: relative;
-  z-index: 2;
-}  
-&.block-input {
-  input {
-    position: relative;
-    z-index: 2;
-    &:focus ~ .bg-right .bg-inner,
-    &:focus ~ .bg-top .bg-inner,
-    &:focus ~ .bg-inner .bg-inner {
-      top: 100%;
-      background: rgba(255, 255, 255, 0.5)
-    }    
-  }
-  .bg-top,
-  .bg-right,
-  .bg {
-    background: rgba(255, 255, 255, 0.5);
-    transition: background 0.2s ease-in-out;
-  }
-  .bg-right,
-  .bg-top {
-    .bg-inner {
-      transition: all 0.2s ease-in-out;
-    }
-  }
-  &:focus,
-  &:hover {
-      .bg-top,
-      .bg-right,
-      .bg {
-        background: rgba(255, 255, 255, 0.8);
-        }
-  }
-}
-// State hover, focus
-&.block-cube-hover:focus,
-&.block-cube-hover:hover {
-  .bg {
-    .bg-inner {
-      top: 100%;
-    }
-  }
-}
+
 }
 
-
-
-
-
-.credits {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  padding: 15px 15px;
-  width: 100%;
-  z-index: 111;
-
-  a {
-      opacity: 0.6;
-      color: #fff;
-      font-size: 11px;
-      text-decoration: none;
-      &:hover {
-        opacity: 1;
-    }
-  }
-}
-
-.register-wrap{
+.login-container, .register-container {
   display: flex;
-  justify-content: center;
-  color: #fff;
-}
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
 
-.small-register {
-  font-size: 8px;
-  
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 15;
-}
-
-.modal-content {
-
-  width: 20%;
   background: rgba(255, 255, 255, 0);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Use a gradient for a cool effect */
-  padding: 20px;
-  border-radius: 5px;
-  position: relative;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Enhanced for a more subtle effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  
 }
 
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  // Add more styling as needed
+input[type="email"], input[type="password"] {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  opacity: 0.9;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
-.login-status
+
+button {
+  width: 100%;
+  opacity: 0.9;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Darkened background */
+  z-index: 999; /* Ensures it's above other content but below the modal */
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the modal */
+  background-color: white; /* Adjusted for better visibility */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensures the modal is above the backdrop */
+  width: 100%;
+  max-width: 500px; /* Adjust width as necessary */
+}
+.modal-header, .modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-close-btn {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  color: #333;
+}
+.error-message {
+  color: rgb(82, 0, 158); // Use red color for errors
+  margin-bottom: 10px; // Add some space below the error message
+  text-align: center; // Center-align the error message
+  font-weight: bold; // Make it bold to catch attention
+}
+.login-wrapper
 {
-  margin-left: 35%;
-  color: #fff;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }

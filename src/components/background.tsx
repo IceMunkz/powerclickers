@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import "./background.css";
 
 import { useRecoilState } from 'recoil';
-import { videoState } from './recoilState';
+import { videoState } from '../state/recoilState';
 
 function Wbackground() {
   const [bgPaused, setBGPaused] = useRecoilState<boolean>(videoState);

@@ -1,0 +1,135 @@
+/* Base layout styles */
+/* Base layout styles */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+    background: rgba(165, 165, 165, 0.5); /* Semi-transparent background */
+    border-radius: 10px;
+    backdrop-filter: blur(5px); /* Soften the video background for better readability */
+   
+}
+
+.profile-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.8); /* More transparency for card backgrounds */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Soft shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease; /* Smooth scaling on hover */
+}
+
+.stat-item:hover {
+    transform: scale(1.05); /* Slightly scale up cards on hover */
+}
+
+/* Icon and text styling */
+.icon-large {
+    margin-bottom: 10px;
+    color: #4b6cb7; /* Subtle color for icons */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.icon-large:hover {
+    color: #2a3f5d; /* Darker shade on hover for interaction feedback */
+}
+
+.stat-item span {
+    color: #333; /* Dark text for better readability */
+    font-size: 16px;
+    text-align: center;
+}
+
+.discord-image img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #4b6cb7; /* Border color matching the icons */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
+}
+
+/* Headings */
+h2 {
+    font-family: 'Press Start 2P', system-ui;
+    font-size: 14px;
+    color: #4b6cb7; /* Match the icons for consistency */
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(231, 233, 240, 0.8); /* Semi-transparent background for headings */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Consistent shadow effect */
+    width: fit-content;
+}
+
+
+
+/* Apply the rainbow animation to specific elements for visual interest */
+.icon-large {
+    animation: rainbow 6s linear infinite;
+    font-size: 30px;
+}
+.logout-button {
+    padding: 10px 20px;
+    font-size: 12px;
+    color: white;
+    background-color: #4b6cb7; /* Matching the icon color for consistency */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    outline: none; /* Removes the outline to keep the design clean */
+    margin-top: 20px; /* Ensures some space between the button and the elements above */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for depth, matching the cards */
+    max-width: 250px;
+    width: auto;
+    margin-left: 10px;
+}
+
+.logout-button:hover {
+    background-color: #2a3f5d; /* Darker shade on hover for interaction feedback */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.logout-button:active {
+    background-color: #1e2a45; /* Even darker for the active state */
+    transform: translateY(1px); /* Pushes the button slightly down when clicked */
+}
+.details-list {
+    list-style: none; /* Removes default list styling */
+    padding: 0;
+    
+    margin: 10px 0; /* Adds some space above and below the list */
+  }
+  
+  .details-list li {
+    
+    font-size: 16px; /* Matches your existing text size */
+    color: #333; /* Ensures text color consistency */
+    padding: 5px 0; /* Adds a little space between list items */
+  }
+  
+  /* Optional: Add a small icon or bullet style */
+  .details-list li::before {
+    content: '•'; /* Adds a custom bullet */
+    color: #4b6cb7; /* Uses the icon color for consistency */
+    display: inline-block;
+    width: 20px; /* Ensures alignment */
+    margin-left: -20px; /* Aligns bullets with the text start */
+  }
+  .bottom-content
+  {
+flex-direction: row;
+  }

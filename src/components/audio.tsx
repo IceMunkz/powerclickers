@@ -4,7 +4,7 @@ import boopSfx from '../assets/background.mp3';
 import bgaudio from '../assets/background2.mp3';
 import useSound from 'use-sound';
 import { useRecoilState } from 'recoil';
-import { audioState } from './recoilState';
+import { audioState } from '../state/recoilState';
 
 function Waudio() {
     const [isPaused, setIsPaused] = useRecoilState<boolean>(audioState);

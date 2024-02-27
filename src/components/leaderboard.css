@@ -1,67 +1,121 @@
-.tableImage
-{
-max-width: 400px;
-margin-left: 15%;
-
-
+.tableImage {
+  max-width: 400px;
+  object-position: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Enhanced for a more subtle effect */
 }
 
-
-.leaderboard-wrapper
-{
- 
-    
-    margin-right: 50%;
-    z-index: 3;
-
+.leaderboard-wrapper {
+  object-position: center;
+  align-items: center;
+  z-index: 3;
+  /* Additional styling to visually match tableImage, if needed */
 }
+
 .table-container {
-
-
-    
-    font-family: 'Press Start 2P', system-ui;
-  }
-  
-  /* Add any additional styles for the table as needed */
-
-/* Apply some basic styling to the table */
-/* Apply some basic styling to the table */
-.table {
-  box-shadow:   -15px 0 0 0 rgb(42, 1, 53),
-  15px 0 0 0 rgb(42, 1, 53),
-  0 -15px 0 0 rgb(42, 1, 53),
-  0 15px 0 0 rgb(42, 1, 53);
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    
-  }
-
-  /* Style table header */
-  .table th {
-    background-color: #cd04ff; /* Green background color */
-    color: rgb(252, 252, 252); /* White text color */
-    padding: 12px;
-    text-align: left;
-  }
-  
-  /* Style table cells */
-  .table td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd; /* Add a bottom border to separate rows */
-    background-color: #cd04ff; opacity: 0.75;
-     color: white;
-     
+  font-family: 'Press Start 2P', Arial, sans-serif; /* Improved fallback fonts */
+  overflow: hidden; /* Ensures no overflow outside the container */
+  border-radius: 8px; /* Rounded corners for the container */
 }
-  
-  /* Style alternating rows for better readability */
-  .table tbody tr:nth-child(even) {
-    background-color: #000000;
+
+.table {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* More subtle shadow for a sleek look */
+  width: 100%;
+  border-collapse: separate; /* Allows for spacing between rows */
+  margin: 20px 0;
+  border-spacing: 0 10px; /* Adds spacing between rows */
+}
+
+.table th {
+  background-color: #673ab7; /* Updated to a more modern shade */
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+  font-size: 16px; /* Slightly larger for readability */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 2px solid #ddd; /* More distinct row separation */
+  background-color: rgba(103, 58, 183, 0.75); /* Semi-transparent for depth */
+  color: #fff;
+  font-size: 14px; /* Adjusted for balance */
+}
+
+.table tbody tr {
+  border-radius: 8px; /* Rounded corners for each row */
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.7); /* Darker shade for contrast */
+}
+
+.table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Light hover effect for interactivity */
+  transition: background-color 0.3s ease;
+}
+
+.lboardcomponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.top-3 {
+  background-color: #f7df1e; /* Yellow background */
+}
+
+/* Increase font size for the top 3 rows */
+.top-3 td {
+  font-size: 17px; /* Adjust the font size as needed */
+}
+/* Add these styles to your leaderboard.css file */
+
+/* Keyframes for flashing text colors */
+@keyframes flashTextColor {
+  0%, 100% { color: #ffd700; } /* Gold */
+  33% { color: #c0c0c0; } /* Silver */
+  66% { color: #cd7f32; } /* Bronze */
+}
+
+/* Define solid background colors for gold, silver, and bronze */
+
+
+/* Define flashing text color animation */
+@keyframes shimmer {
+  0% {
+    text-shadow: 0 0 5px #800080, 0 0 10px #800080, 0 0 15px #800080, 0 0 20px #800080, 0 0 25px #800080, 0 0 30px #800080, 0 0 35px #800080;
   }
-  
-  /* Add hover effect on rows */
-  .table tbody tr:hover {
-    background-color: #000000;
-    transition: background-color 0.3s ease; /* Smooth transition effect */
+  100% {
+    text-shadow: 0 0 5px #0000CD, 0 0 10px #0000CD, 0 0 15px #0000CD, 0 0 20px #0000CD, 0 0 25px #0000CD, 0 0 30px #0000CD, 0 0 35px #0000CD;
   }
- 
+}
+
+.flash-text {
+  animation: shimmer 1.5s infinite;
+  
+}
+
+
+/* Apply the flashing text color animation to top-3 cells */
+.top-3 td 
+{
+  font-size: 14px; /* Adjust the font size as needed */
+  animation: shimmer 2s infinite; /* Apply the animation */
+}
+
+
+
+
+/* Hover effect for rows */
+.table tr:hover {
+  background-color: #f5f5f5;
+}
